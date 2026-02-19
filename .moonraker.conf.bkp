@@ -60,8 +60,6 @@ path = ~/moonraker-timelapse
 origin = https://github.com/mainsail-crew/moonraker-timelapse.git
 managed_services = klipper moonraker
 
-[timelapse]
-
 [update_manager beacon]
 type = git_repo
 channel = dev
@@ -88,14 +86,6 @@ type = git_repo
 path = ~/crowsnest
 origin = https://github.com/mainsail-crew/crowsnest.git
 managed_services = crowsnest
-install_script = tools/install.sh
-
-[update_manager sonar]
-type = git_repo
-path = ~/sonar
-origin = https://github.com/mainsail-crew/sonar.git
-primary_branch = main
-managed_services = sonar
 install_script = tools/install.sh
 
 [update_manager KlipperScreen]
