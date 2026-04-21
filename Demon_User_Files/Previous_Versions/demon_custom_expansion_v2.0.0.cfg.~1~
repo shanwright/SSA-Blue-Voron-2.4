@@ -114,7 +114,7 @@ gcode: # DO NOT EDIT OR ADD ANYTHING IN THIS SECTION!!
 ###################################################################################################################################################
 
 [gcode_macro _CUSTOM_PRE_START] # Very first action after you hit print!
-gcode:
+gcode: 
   
 
 
@@ -162,6 +162,8 @@ gcode:
 
 [gcode_macro _CUSTOM_PRE_END] # Before the PRINT_END macro starts
 gcode:
+  G92 E0                         ; zero the extruder
+  G1 E-20.0 F3600                ; retract filament
   SET_SKEW CLEAR=1
 
 
@@ -247,7 +249,7 @@ gcode:
 
 
 [gcode_macro _CUSTOM_CANCEL] # After _DEMON_CANCEL macro runs
-gcode:
+gcode: 
 
 
 
