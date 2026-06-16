@@ -11,9 +11,9 @@
 ###################################################################################################################################################
 ## SYSTEM VARIABLES ###############################################################################################################################
 
-variable_orca_enable: True                       # ONLY available for Orca Slicer! Enable DEMON Adaptive Pressure Advance & multi surface features True/False
-variable_orca_multi_surface: True                # Enable Orca Multi Plate function, this will override any filament specific offsets set in respective sections!
-variable_combine_offset: True                    # Choose to combine Orca_multi_surface offsets with filament specific ones below for ASA/ABS/PETG/TPU True/False
+variable_orca_enable: False                      # ONLY available for Orca Slicer! Enable DEMON Adaptive Pressure Advance & multi surface features True/False
+variable_orca_multi_surface: False               # Enable Orca Multi Plate function, this will override any filament specific offsets set in respective sections!
+variable_combine_offset: False                   # Choose to combine Orca_multi_surface offsets with filament specific ones below for ASA/ABS/PETG/TPU True/False
 
 variable_floating_bed_fans: True                 # Set the bed fans monitor to use floating fan speeds against a mid point chamber temp during printing True/False
 variable_floating_bed_fans_max: 0.85             # Set the floating fan's scaled max speed percentage between the high & low speed values (0.0-1.0)
@@ -34,7 +34,7 @@ variable_auto_reset_eddy_offset: False           # When using BTT Eddy without u
 variable_eddy_park_x: 100                        # Set the most stable place on the bed to setup your Eddy probe, compare bed height movement between default & ABS/ASA Heightmaps!
 variable_eddy_park_y: 100                        # Set the most stable place on the bed to setup your Eddy probe, compare bed height movement between default & ABS/ASA Heightmaps!
 
-variable_z_tracker_reduced_monitoring: True      # Set True to reduce Z Tracker monitoring if system performance is impacted, stored Z values will be less accurate
+variable_z_tracker_reduced_monitoring: False     # Set True to reduce Z Tracker monitoring if system performance is impacted, stored Z values will be less accurate
 
 variable_sovol_plr: False                        # Set True if you have a Sovol printer with PLR (Power Loss Recovery), like the SV08 Max! Must be on factory firmware! 
                                                 
@@ -72,12 +72,12 @@ gcode:                                           # Leave this section empty!
 variable_home_y_first: False                     # Set True to home the Y axis first. Set False to home X first
 variable_override_home_power_safety: False       # Override the 1.0a Soft Home power limit - at your own risk. You may damage your printer if too high!
 variable_home_power: 0.7                         # Set desired power level to reduce axis current to when homing X & Y, theres a 1.0a limit here!
-variable_pre_home_lift: 10                       # Set height to lift the toolhead prior to homing if axes are not enabled & homed. Range of 0-20mm
-variable_z_lift_speed: 25                        # Set the speed to lift the Z axis. Range of 1-25mm/s - limited by your max_z_velocity
+variable_pre_home_lift: 20                       # Set height to lift the toolhead prior to homing if axes are not enabled & homed. Range of 0-20mm
+variable_z_lift_speed: 18                        # Set the speed to lift the Z axis. Range of 1-25mm/s - limited by your max_z_velocity
 variable_axis_backoff_speed: 35                  # Set speed for the toolhead to back away from the axis endstop mm/s
 variable_axis_backoff_distance: 20               # Set distance in mm to back the toolhead away from the axis endstop
 variable_axis_register_clear_wait: 2.5           # Set axis register clear time. If using sensorless homing this value should be 2 seconds or slightly over
-variable_homing_movement_travel_speed: 300       # Set speed for the toolhead to move to the Z axis endstop or probing location in mm/s 
+variable_homing_movement_travel_speed: 200       # Set speed for the toolhead to move to the Z axis endstop or probing location in mm/s 
 
 ## FIRST HOMED AXIS PARK SETTINGS
 variable_park_first_homed_axis: False            # Set True if you need your first homed axis to park in a safe location to home the second axis!
@@ -86,8 +86,8 @@ Variable_parking_travel_speed: 100               # Set first homed axis parking 
 
 ## HOMING PROBE POINT SETTINGS
 variable_set_probe_point_default: True           # Set False if you want a custom probing point for your bltouch/eddy probe
-variable_set_probe_custom_x: 175                 # Set custom X probe position for your bltouch/eddy probe
-variable_set_probe_custom_y: 175                 # Set custom Y probe position for your bltouch/eddy probe
+variable_set_probe_custom_x: 100                 # Set custom X probe position for your bltouch/eddy probe
+variable_set_probe_custom_y: 100                 # Set custom Y probe position for your bltouch/eddy probe
 
 ###################################################################################################################################################
 ###################################################################################################################################################
@@ -99,7 +99,7 @@ variable_set_probe_custom_y: 175                 # Set custom Y probe position f
 ## NOTE: THIS SECTION IS FOR USE WITH EDDY NG SOFTWARE - REGULAR BTT EDDY CODE IN MAINLINE KLIPPER WILL NOT USE THESE SETTINGS
 
 variable_eddy_ng_static_probe_z: 2.0             # Set Z height for accurate static Z probe, values 1-4mm accepted!
-variable_eddy_ng_tap_temperature: 175            # Set the nozzle temperature to tap with, 150c is recommended! This temperature will override other preheating temps!
+variable_eddy_ng_tap_temperature: 150            # Set the nozzle temperature to tap with, 150c is recommended! This temperature will override other preheating temps!
 variable_eddy_ng_tap_bed_off: False              # Set True if you find tap results often fail with the bed heater on, but are ok with the bed off 
 variable_eddy_ng_random_tap: True                # Set True to use a random spot within the set range to tap the bed! Great for not touching the same spot repeatedly!
 variable_eddy_ng_random_tap_range: 25            # Set the range you'll allow for the random tap location! The set point is the centre of this range in both X & Y axes
@@ -161,17 +161,17 @@ variable_filament_change_park_y: 10              # Set Y axis position to park f
 variable_filament_change_park_min_z: 50          # Set minimum Z axis position to park for filament change. If below that value the toolhead will raise
 
 ## EXTRUDE LENGTHS
-variable_load_length: 70                         # Length of filament to load from being empty
+variable_load_length: 125                        # Length of filament to load from being empty
 variable_load_purge_length: 25                   # How much filament to purge when loading
 variable_unload_length: 125                      # Length of filament to unload from being fully loaded
 variable_unload_purge_length: 25                 # How much filament to purge when unloading
-variable_max_extrude_speed: 12                   # Set the maximum extrude speed to use during loading/unloading in mm/s Orbiter 2.x like 15-18
+variable_max_extrude_speed: 16                   # Set the maximum extrude speed to use during loading/unloading in mm/s Orbiter 2.x like 15-18
 
 ## AUTO COOL SETTINGS
 variable_auto_cool: True                         # Set True to Auto Cool the hotend when loading/unloading is finished & the printer is left idle
 variable_auto_cool_on_pause: True                # Set True to Auto Cool when a active print is paused, original temperature is auto restored on resume
 variable_auto_cool_noz_off: True                 # Set True to enable turning the hotend off with Auto Cool. Idle state only, not when printing
-variable_auto_cool_load_timer: 360               # Time in seconds after a LOAD when in an idle state before the hotend temperature is reduced
+variable_auto_cool_load_timer: 15                # Time in seconds after a LOAD when in an idle state before the hotend temperature is reduced
 variable_auto_cool_unload_timer: 120             # Time in seconds after an UNLOAD when in an idle state before the hotend temperature is reduced
 variable_auto_cool_off_timer: 120                # Time in seconds after the temperature reduction when in an idle state before the hotend is turned off
 
@@ -190,12 +190,12 @@ gcode:                                           # Leave this section empty!
 ###################################################################################################################################################
 ## ORCA MULTI SURFACE BUILD PLATE OFFSET ADJSUTMENTS ##############################################################################################
 
-variable_orca_smooth_cool_plate: 0.00             # Use with EXTREME caution!! Manual G-Code Z offset override!
-variable_orca_engineering_plate: 0.00             # Use with EXTREME caution!! Manual G-Code Z offset override!
-variable_orca_smooth_hi_temp_plate: 0.00          # Use with EXTREME caution!! Manual G-Code Z offset override! ############### fystec pei ###########
-variable_orca_textured_pei_plate: 0.00            # Use with EXTREME caution!! Manual G-Code Z offset override!
-variable_orca_textured_cool_plate: -0.05         # Use with EXTREME caution!! Manual G-Code Z offset override! ############### Blue cool ############
-variable_orca_super_tack_plate: 0.00              # Use with EXTREME caution!! Manual G-Code Z offset override!
+variable_orca_smooth_cool_plate: 0.00            # Use with EXTREME caution!! Manual G-Code Z offset override!
+variable_orca_engineering_plate: 0.00            # Use with EXTREME caution!! Manual G-Code Z offset override!
+variable_orca_smooth_hi_temp_plate: 0.00         # Use with EXTREME caution!! Manual G-Code Z offset override!
+variable_orca_textured_pei_plate: 0.00           # Use with EXTREME caution!! Manual G-Code Z offset override!
+variable_orca_textured_cool_plate: 0.00          # Use with EXTREME caution!! Manual G-Code Z offset override!
+variable_orca_super_tack_plate: 0.00             # Use with EXTREME caution!! Manual G-Code Z offset override!
 
 # NOTE: Range of -0.165mm to +0.165mm max adjustment, anything outside this will cause EMERGENCY STOP
 
@@ -340,11 +340,11 @@ variable_neopixel_off: True                      # Switch toolhead or attached n
 ## DEFAULT SETTINGS
 variable_nevermore_asa_abs_only: True            # Only run the post print timers for ASA & ABS filament prints
 variable_nevermore_post_timer: True              # Set True/False to run the post print filtration timer after the print or not
-variable_nevermore_leave_running: True           # Set True/False to leave the fan on or not after the print is finished, including after the timer
+variable_nevermore_leave_running: False          # Set True/False to leave the fan on or not after the print is finished, including after the timer
 
 ## SPEED & TIME
-variable_nevermore_post_speed: 0.9               # Set Nevermore fan speed for when the print is finished 0.0-1.0
-variable_nevermore_post_run_time: 1              # Set the amount of time to run the Nevermore post print filtration timer
+variable_nevermore_post_speed: 0.6               # Set Nevermore fan speed for when the print is finished 0.0-1.0
+variable_nevermore_post_run_time: 5              # Set the amount of time to run the Nevermore post print filtration timer
 
 # NOTE: More Nevermore per-filament settings are available in the demon_user_settings_filament_variables cfg file!
 
@@ -382,7 +382,7 @@ variable_purge_line_length: 150                  # Set how long in actual mm you
 ## WELCOME MESSAGES ###############################################################################################################################
 
 variable_screen_msg: "DEMONWARE Online"
-variable_console_msg: "Welcome to Demon Essentials! Happy printing!"
+variable_console_msg: "Welcome to Demon Essentials! Happy printing! These macros were written by a human, no AI was used in their creation!"
 
 ## NOTE: To set your own welcome messages please enclose it in quote marks or it wont work ("")
 ## NOTE: The screen_msg is best kept short
@@ -406,17 +406,17 @@ gcode:                                           # Leave this section empty!
 
 variable_klicky_probe: False                     # Do you have a Klicky Probe True/False
 variable_chamber_fan: False                      # Do you have a temperature controlled chamber cooling fan True/False
-variable_chamber_sensor: True                    # Do you have a temperature monitoring sensor in your chamber True/False
+variable_chamber_sensor: False                   # Do you have a temperature monitoring sensor in your chamber True/False
 variable_chamber_heater: False                   # Do you have a chamber heater? Have you agreed to the use of this hardware with these macros above?
-variable_bed_fans: True                          # Do you have any under bed mounted fans True/False
+variable_bed_fans: False                         # Do you have any under bed mounted fans True/False
 variable_runout_sensor: True                     # Do you have a Filament Runout Sensor switch type inc. BTT Smart Sensor True/False
-variable_encoder_runout_sensor: True             # Do you have a encoder based Filament Runout Sensor like the BTT Smart Sensor True/False
-variable_nevermore: True                         # Do you have a Nevermore Fan system True/False
+variable_encoder_runout_sensor: False            # Do you have a encoder based Filament Runout Sensor like the BTT Smart Sensor True/False
+variable_nevermore: False                        # Do you have a Nevermore Fan system True/False
 variable_shutdown_relay: False                   # Do you have a Moonraker Power Device Shutdown Relay True/False
-variable_printer_lights: True                    # Do you have controlable lights on your printer True/False
-variable_neopixel_led: True                      # Do you have addressable NeoPixel LED's separate from any LED Effects systems True/False
-variable_nozzle_cleaner: True                    # Do you have a nozzle cleaner brush/srubber True/False
-variable_purge_bucket: True                      # Do you have a purge bucket
+variable_printer_lights: False                   # Do you have controlable lights on your printer True/False
+variable_neopixel_led: True                     # Do you have addressable NeoPixel LED's separate from any LED Effects systems True/False
+variable_nozzle_cleaner: False                   # Do you have a nozzle cleaner brush/srubber True/False
+variable_purge_bucket: False                     # Do you have a purge bucket
 variable_aes_system: False                       # Do you have the Demon Auto Emergency Stop System True/False
 
 # AUTO EMERGENCY STOP SYSTEM Full instructions are available here: https://github.com/3DPrintDemon/Voron_2.4_AES_System_Auto_Emergency_Stop_For_Z_Endstop_Switch
@@ -487,9 +487,9 @@ gcode:                                           # Leave this section empty!
 ###################################################################################################################################################
 ## EXTENDED CONSOLE LOGGING #######################################################################################################################
 
-variable_eddy_verbose: False                      # Set your Eddy probe to show it's offset workings True/False - Requires DEMON_BTT_Eddy_Offset_USB_DUO.cfg
-variable_apa_readback_enable: False               # Set console to log all DEMON Adaptive Pressure Advance actions during the print True/False
-variable_bed_fans_settings_readback: False        # Set console to log all bed fans actions during the print True/False
+variable_eddy_verbose: True                      # Set your Eddy probe to show it's offset workings True/False - Requires DEMON_BTT_Eddy_Offset_USB_DUO.cfg
+variable_apa_readback_enable: False              # Set console to log all DEMON Adaptive Pressure Advance actions during the print True/False
+variable_bed_fans_settings_readback: False       # Set console to log all bed fans actions during the print True/False
 
 ###################################################################################################################################################
 
@@ -520,7 +520,7 @@ variable_mesh_hi_temp_timer: 10                  # Set the heat soak timer for h
 
 ## NOTE: The lo/hi heat soak thresshold options only work when the system is used with a chamber thermistor
 
-variable_use_bed_fans: True
+variable_use_bed_fans: False
 
 ###################################################################################################################################################
 
@@ -567,7 +567,7 @@ variable_ready_up_asa_bed: 100                   # ASA ReadyUp Preheat temp
 variable_ready_up_petg_noz: 150                  # PETG ReadyUp Preheat temp 
 variable_ready_up_petg_bed: 75                   # PETG ReadyUp Preheat temp
 variable_ready_up_tpu_noz: 150                   # TPU ReadyUp Preheat temp 
-variable_ready_up_tpu_bed: 50                    # TPU ReadyUp Preheat temp
+variable_ready_up_tpu_bed: 70                    # TPU ReadyUp Preheat temp
 
 ###################################################################################################################################################
 
