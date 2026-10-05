@@ -1,0 +1,64 @@
+#### crowsnest.conf
+#### This is a typical default config.
+#### Also used as default in mainsail / MainsailOS
+#### See:
+#### https://github.com/mainsail-crew/crowsnest/blob/master/README.md
+#### for details to configure to your needs.
+
+
+#####################################################################
+####                                                            #####
+####      Information about ports and according URL's           #####
+####                                                            #####
+#####################################################################
+####                                                            #####
+####    Port 8080 equals /webcam/?action=[stream/snapshot]      #####
+####    Port 8081 equals /webcam2/?action=[stream/snapshot]     #####
+####    Port 8082 equals /webcam3/?action=[stream/snapshot]     #####
+####    Port 8083 equals /webcam4/?action=[stream/snapshot]     #####
+####                                                            #####
+#####################################################################
+####    RTSP Stream URL: ( if enabled and supported )           #####
+####    rtsp://<ip>:<rtsp_port>/stream.h264                     #####
+#####################################################################
+
+# [crowsnest]
+# log_path: /home/pi/printer_data/logs/crowsnest.log
+# log_level: verbose                     # Valid Options are quiet/verbose/debug
+# delete_log: false                     # Deletes log on every restart, if set to true
+# no_proxy: false
+
+# [cam 1]
+# mode: ustreamer
+# port: 8080
+# device: /dev/v4l/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4.1.1:1.0-video-index0
+# resolution: 640x480        # Kept at 720p to protect your USB 2.0 bandwidth
+# max_fps: 30                # 15 FPS ensures both cameras stream smoothly
+
+# [cam 2]
+# mode: ustreamer
+# port: 8081                 # Must be a different port than Cam 1
+# device: /dev/v4l/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4.1.2:1.0-video-index0
+# resolution: 640x480
+# max_fps: 30
+
+[crowsnest]
+log_path: /home/pi/printer_data/logs/crowsnest.log
+# log_level: quiet                       # Kept quiet to prevent M.2 drive micro-stutters
+# delete_log: false                     
+no_proxy: false
+
+[cam 1]
+mode: mjpg                             # Switches to high-speed Camera-MPEG streaming
+port: 8080
+device: /dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_8F5D0B9F-video-index0
+resolution: 640x480                    
+max_fps: 30                            
+
+[cam 2]
+mode: mjpg                             # Switches to high-speed Camera-MPEG streaming
+port: 8081                             
+device: /dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_F14D9DCF-video-index0
+resolution: 640x480
+max_fps: 30
+

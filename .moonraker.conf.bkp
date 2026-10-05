@@ -62,13 +62,6 @@ path = ~/mainsail-config
 origin = https://github.com/mainsail-crew/mainsail-config.git
 managed_services = klipper
 
-[update_manager timelapse]
-type = git_repo
-primary_branch = main
-path = ~/moonraker-timelapse
-origin = https://github.com/mainsail-crew/moonraker-timelapse.git
-managed_services = klipper moonraker
-
 [update_manager cartographer_plugin]
 type = python
 channel = stable
@@ -113,14 +106,6 @@ env = ~/.KlipperScreen-env/bin/python
 requirements = scripts/KlipperScreen-requirements.txt
 install_script = scripts/KlipperScreen-install.sh
 managed_services = KlipperScreen
-
-[update_manager fluidd]
-path = /home/pi/fluidd
-repo = fluidd-core/fluidd
-channel = stable
-type = web
-persistent_files = 
-	config.json
 
 [update_manager klipper_tmc_autotune]
 primary_branch = main
